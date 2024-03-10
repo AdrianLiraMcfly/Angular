@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './registrer.component.css'
 })
 export class RegistrerComponent{
-  
+
   registrerForm = new FormGroup({
     name: new FormControl('', [Validators.required, Validators.minLength(3)]),
     email: new FormControl('', [Validators.required, Validators.email]),

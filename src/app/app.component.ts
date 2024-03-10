@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet, RouterLink, Router, NavigationStart, NavigationEnd } from '@angular/router';
-
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -9,13 +8,6 @@ import { RouterOutlet, RouterLink, Router, NavigationStart, NavigationEnd } from
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit{
-  myData = [
-    { Nombre: 'Juan', Edad: 30, Ciudad: 'México' },
-    { Nombre: 'Ana', Edad: 25, Ciudad: 'Guadalajara' },
-    // ...
-  ];
-
-  myHeaders = ['Nombre', 'Edad', 'Ciudad'];
   loading = false;
 
   constructor(private router: Router) {}
