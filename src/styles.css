@@ -1,1 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
+body{
+    background-image: url('assets/img/back.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+.control {
+    width: 80px;
+    height: 80px;
+}
+
+.navbar {
+    background-color: #5800fc;
+    border-bottom: 1px solid;
+    border-top: 1px solid;
+    padding: 0;
+}
+
+.cardglobal{
+    height: 50vh;
+}

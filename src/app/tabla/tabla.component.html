@@ -1,0 +1,18 @@
+<table class="table">
+ <thead>
+    <tr>
+        <th scop="col" *ngFor="let header of headers">
+            {{header}}
+        </th>
+        <th scope="col">Acciones</th>
+    </tr>
+ </thead>
+    <tbody>
+        <tr *ngFor="let row of data; index as i">
+            <td *ngFor="let header of headers">{{row[header]}}</td>
+            <td>
+                <button class="btn btn-primary">Editar</button>
+                <button class="btn btn-danger" (click)="delete(i)">Eliminar</button>
+            </td>
+        </tr>
+</table>
