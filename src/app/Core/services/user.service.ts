@@ -1,17 +1,16 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpStatusCode } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  url = 'http://localhost:3000/users';
   constructor(private http: HttpClient) { }
   registrarUsuario(usuario: any) {
-    console.log(usuario);
+    return this.http.post('http://127.0.0.1:8000/api/auth/register', usuario);
   }
 
-  getUsuarios() {
-    return this.http.get(this.url);
-  }
+  loginUsuario(usuario: any) {
+    return this.http.post('http://127.0.0.1:8000/api/auth/login', usuario);
+}
 }

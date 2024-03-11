@@ -1,4 +1,10 @@
 {
-    "users": [
-    ]
+  "users": [
+    {
+      "id": "6a53",
+      "name": "Jorge",
+      "email": "jorge.liralopez@gmail.com",
+      "password": "Jorge1233"
+    }
+  ]
 }

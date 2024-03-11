@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { UserService } from '../../Core/services/user.service';
 
 @Component({
   selector: 'app-registrer',
@@ -10,6 +11,8 @@ import { CommonModule } from '@angular/common';
   styleUrl: './registrer.component.css'
 })
 export class RegistrerComponent implements OnInit{
+
+  constructor(private user:UserService ) { }
 
   registrerForm = new FormGroup({
     name: new FormControl('', [Validators.required, Validators.minLength(3)]),
@@ -24,7 +27,10 @@ export class RegistrerComponent implements OnInit{
   ngOnInit(): void {
   }
   onSubmit() {
-    console.log(this.registrerForm.value);
-
+    this.user.registrarUsuario(this.registrerForm.value).subscribe(response => {
+      console.log(response);
+    }, error => {
+      console.log(error);
+    });
   }
 }
