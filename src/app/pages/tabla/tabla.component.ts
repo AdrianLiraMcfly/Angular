@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { UserService } from '../../Core/services/user.service';
 
 @Component({
   selector: 'app-tabla',
@@ -9,10 +10,11 @@ import { CommonModule } from '@angular/common';
   styleUrl: './tabla.component.css'
 })
 export class TablaComponent {
-@Input() data: any[] = [];
-@Input() headers: string[] = [];
-
-delete(index: number) {
-  this.data.splice(index, 1);
-}
+  @Input() users: any;
+  constructor(private userService: UserService) { }
+  ngOnInit() {
+    this.userService.getUser().subscribe((user: any) => {
+      this.users = user;
+    });
+  }
 }

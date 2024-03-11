@@ -1,3 +1,15 @@
+<div class="container-fluid"><div class="row">
+    <div class="col-12">
+    <div class="alert alert-success w-100" role="alert" *ngIf="loginSuccess">
+        ¡Inicio de sesión exitoso!
+      </div>
+      <div class="alert alert-danger w-100" role="alert" *ngIf="loginError">
+        Error en el inicio de sesión.
+      </div>
+     </div>
+    </div>
+</div>
+
 <div class="container">
     <div class="row">
         <div class="col-md-6 offset-md-3">
@@ -22,6 +34,8 @@
                                 <div *ngIf="password?.errors?.['minlength']">Password must be at least 6 characters</div>
                             </div>
                             <button class="btn btn-primary mt-3" type="submit" [disabled]="!loginForm.valid">Loggear</button>
+
+                            <a routerLink="'/register'" class="btn btn-link">Register</a>
                         </div>
                     </form>
                 </div>

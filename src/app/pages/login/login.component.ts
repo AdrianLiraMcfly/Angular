@@ -12,6 +12,8 @@ import { UserService } from '../../Core/services/user.service';
 export class LoginComponent{
   constructor(private user: UserService) { }
   submitted = false;
+  loginSuccess = false;
+  loginError = false;
   loginForm = new FormGroup({
     email: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
@@ -27,8 +29,14 @@ export class LoginComponent{
   onSubmit() {
     this.user.loginUsuario(this.loginForm.value).subscribe(response => {
       console.log(response);
-    }, error => {
+      this.loginSuccess = true;
+      this.loginError = false;
+      localStorage.setItem('token', response['access_token']);
+    }
+    , error => {
       console.log(error);
+      this.loginSuccess = false;
+      this.loginError = true;
     });
     this.submitted = true;
     
