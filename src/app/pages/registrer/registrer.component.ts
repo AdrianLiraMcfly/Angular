@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './registrer.component.html',
   styleUrl: './registrer.component.css'
 })
-export class RegistrerComponent{
+export class RegistrerComponent implements OnInit{
 
   registrerForm = new FormGroup({
     name: new FormControl('', [Validators.required, Validators.minLength(3)]),
@@ -21,7 +21,10 @@ export class RegistrerComponent{
   get email() { return this.registrerForm.get('email'); }
   get password() { return this.registrerForm.get('password'); }
 
+  ngOnInit(): void {
+  }
   onSubmit() {
     console.log(this.registrerForm.value);
+
   }
 }

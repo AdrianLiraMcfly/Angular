@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { RegistrerComponent } from './registrer.component';
 import { RouterModule } from '@angular/router';
 
-
 @NgModule({
   declarations: [],
   imports: [CommonModule, 
