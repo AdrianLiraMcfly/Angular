@@ -22,13 +22,13 @@
                     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                         <div class="form-group">
                             <label for="username">Email</label>
-                            <input type="text" formControlName="email" class="form-control" required/>
+                            <input type="text" formControlName="email" class="form-control" [(ngModel)]="login.email" required/>
                             <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="text-danger">
                                 <div *ngIf="email?.errors?.['required']">Email is required</div>
                                 <div *ngIf="email?.errors?.['email']">Email must be a valid email address</div>
                             </div>
                             <label for="password">Password</label>
-                            <input type="password" formControlName="password" class="form-control" required />
+                            <input type="password" formControlName="password" class="form-control" [(ngModel)]="login.password" required />
                             <div *ngIf="password?.invalid && (password?.dirty || password?.touched)" class="text-danger">
                                 <div *ngIf="password?.errors?.['required']">Password is required</div>
                                 <div *ngIf="password?.errors?.['minlength']">Password must be at least 6 characters</div>
@@ -36,8 +36,15 @@
                             <button class="btn btn-primary mt-3" type="submit" [disabled]="!loginForm.valid">Loggear</button>
 
                             <a routerLink="'/register'" class="btn btn-link">Register</a>
+
                         </div>
                     </form>
+
+                    <div *ngIf="showCodeVeryfication">
+                        <label for="code">Code</label>
+                        <input type="text" class="form-control" [(ngModel)]="verifyCode.code" required />
+                        <button class="btn btn-primary mt-3" type="button" (click)="onCodeSubmit()" [disabled]="!loginForm.valid">Verify</button>
+                    </div>
                 </div>
             </div>
         </div>
