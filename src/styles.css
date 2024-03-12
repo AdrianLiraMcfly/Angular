@@ -1,18 +1,10 @@
-body{
-    background-image: url('./assets/img/back.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
-}
-
 .control {
     width: 80px;
     height: 80px;
 }
 
 .navbar {
-    background-color: #5800fc;
+    background-color: #737275;
     border-bottom: 1px solid;
     border-top: 1px solid;
     padding: 0;

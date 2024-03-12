@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { Register } from '../Interfaces/register';
 import { LoginResponse } from '../Interfaces/login-response';
 import { VerifyCode } from '../Interfaces/verifyCode';
+import { Root } from '../Interfaces/users.interface';
 @Injectable({
   providedIn: 'root'
 })
@@ -23,10 +24,14 @@ export class UserService {
   }
 
 
-  getUser() {
+  getUser(): Observable<Root> {
     const headers = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'));
-    console.log(headers);
-    return this.http.get('http://127.0.0.1:8000/api/user', {headers});
+    return this.http.get<Root>('http://127.0.0.1:8000/api/users/index', {headers});
+  }
+
+  deleteUser(id: number): Observable<HttpStatusCode> {
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'));
+    return this.http.delete<HttpStatusCode>('http://127.0.0.1:8000/api/users/destroy/' + id, {headers});
   }
 
   verifyCode(data: VerifyCode): Observable<LoginResponse> {

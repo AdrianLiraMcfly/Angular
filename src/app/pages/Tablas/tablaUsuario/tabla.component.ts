@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UserService } from '../../Core/services/user.service';
+import { UserService } from '../../../Core/services/user.service';
 
 @Component({
   selector: 'app-tabla',
@@ -10,11 +10,19 @@ import { UserService } from '../../Core/services/user.service';
   styleUrl: './tabla.component.css'
 })
 export class TablaComponent {
-  @Input() users: any;
+  @Input() users: any[] = [];
+
   constructor(private userService: UserService) { }
+
   ngOnInit() {
-    this.userService.getUser().subscribe((user: any) => {
-      this.users = user;
+    this.userService.getUser().subscribe((response: any) => {
+      this.users = response.user;
+    });
+  }
+
+  deleteUser(id: number) {
+    this.userService.deleteUser(id).subscribe((response: any) => {
+      this.users = this.users.filter((user: any) => user.id !== id);
     });
   }
 }

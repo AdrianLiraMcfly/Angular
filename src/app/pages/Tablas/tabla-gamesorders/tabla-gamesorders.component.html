@@ -1,0 +1,39 @@
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="card-title
+                    text-center">Tabla de games orders</h1>
+                    <button class="btn btn-success mb-3" type="button">Crear</button>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Nombre</th>
+                                <th>Email</th>
+                                <th>Status</th>
+                                <th>Fecha</th>
+                                <th>Consolas vendidas</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let gameorder of gamesorders">
+                                <td>{{ gameorder.id }}</td>
+                                <td>{{ gameorder.name }}</td>
+                                <td>{{ gameorder.email }}</td>
+                                <td>{{ gameorder.status }}</td>
+                                <td>{{ gameorder.created_at }}</td>
+                                <td>{{ gameorder.purchased_consoles }}</td>
+                                <td>
+                                    <button class="btn btn-danger">Eliminar</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

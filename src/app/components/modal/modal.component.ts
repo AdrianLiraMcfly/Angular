@@ -1,5 +1,6 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, viewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
 @Component({
   selector: 'app-modal',
   standalone: true,
@@ -7,11 +8,6 @@ import { CommonModule } from '@angular/common';
   templateUrl: './modal.component.html',
   styleUrl: './modal.component.css'
 })
-export class ModalComponent {
-@Input() isActive= false;
-@Output() closeModal = new EventEmitter<void>();
+export class ModalComponent{
 
-close() {
-  this.closeModal.emit();
-}
-}
+  }

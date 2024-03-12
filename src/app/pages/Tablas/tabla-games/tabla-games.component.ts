@@ -1,9 +1,10 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { GamesService } from '../../Core/services/games.service';
-import { Game } from '../../Core/Interfaces/games.interfaces';
+import { GamesService } from '../../../Core/services/games.service';
+import { Game } from '../../../Core/Interfaces/games.interfaces';
 import { FormBuilder, FormGroup, ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { ModalComponent } from '../../components/modal/modal.component';
+import { ModalComponent } from '../../../components/modal/modal.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tabla-games',
@@ -14,12 +15,10 @@ import { ModalComponent } from '../../components/modal/modal.component';
 })
 export class TablaGamesComponent{
   @Input() games: Game[] = [];
-  game: Game = {id: 0, name: '', maker: '', category_id: 0, category: {id: 0, name: ''}};
   isActive = false;
 
-  constructor(private gamesService: GamesService,private formBuilder: FormBuilder) { }
-
-  gameForm = this.formBuilder.group({
+  constructor(private gamesService: GamesService,private formBuilder: FormBuilder, private router:Router) { }
+  gameForm: FormGroup = this.formBuilder.group({
     name: [''],
     maker: [''],
     category: ['']
@@ -41,20 +40,8 @@ export class TablaGamesComponent{
   });
 }
 
-  createGame() {
-  this.gamesService.createGame(this.game).subscribe((response: any) => {
-    this.games = [...this.games, response.game];
-  });
-}
-openModal(){
-  this.isActive = true;
-  console.log(this.isActive);
-}
-closeModal(){
-  this.isActive = false;
-}
-
-onSubmit(){
-  this.closeModal();
-  this.gameForm.reset();}
-}
+  crearJuego(){
+    this.router.navigate(['/formJuego']);
+  }
+  
+  }
