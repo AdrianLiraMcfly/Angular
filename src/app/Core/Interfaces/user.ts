@@ -1,10 +1,9 @@
 export interface User {
-    msg: string
-    data: Data
-  }
-  
-  export interface Data {
-    name: string
-    email: string
-    id: number
-  }
+  id: number
+  name: string
+  email: string
+  email_verified_at: any
+  status: number
+  created_at: any
+  updated_at: any
+}

@@ -58,8 +58,11 @@ export class LoginComponent{
       response => {
         if(response.access_token) {
           localStorage.setItem('token', response.access_token);
-          console.log('token', response.access_token);
+          this.user.Me().subscribe(response => {
+            localStorage.setItem('user', JSON.stringify(response));
+          });
           this.router.navigate(['/tabla']);
+          console.log(response);
         }
       }
     );

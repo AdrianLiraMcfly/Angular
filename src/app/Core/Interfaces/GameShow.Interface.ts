@@ -1,5 +1,5 @@
-export interface Root {
-    games: Game[]
+export interface GameShow {
+    game: Game
   }
   
   export interface Game {
@@ -8,15 +8,20 @@ export interface Root {
     maker: string
     category_id: number
     category: Category
-    supplier_id: number
-    supplier: Supplier
-    game_inventory_id: number
     game_inventory: GameInventory
+    suppliers: Supplier[]
   }
   
   export interface Category {
     id: number
     name: string
+  }
+  
+  export interface GameInventory {
+    id: number
+    game_id: number
+    stock: number
+    price: string
   }
   
   export interface Supplier {
@@ -29,13 +34,5 @@ export interface Root {
   
   export interface Pivot {
     game_id: number
-    supplier_id: number
+    supplier_id: number
   }
-  
-  export interface GameInventory {
-    id: number
-    game_id: number
-    stock: number
-    price: string
-  }
-  

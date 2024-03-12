@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Root } from '../Interfaces/games.interfaces';
+import { Game } from '../Interfaces/GameShow.Interface';
 
 @Injectable({
   providedIn: 'root'
@@ -31,4 +32,9 @@ export class GamesService {
     const headers = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'));
     return this.http.put(this.url + "/update/" + id, game, {headers});
 }
+
+  getGame(id: number): Observable<Game> {
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'));
+    return this.http.get<Game>(this.url + "/show/" + id, {headers});
+  }
 }

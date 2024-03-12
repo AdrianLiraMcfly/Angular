@@ -20,18 +20,19 @@ export class UserService {
 
   loginUsuario(data: Login): Observable<LoginResponse> {
     return this.http.post<LoginResponse>('http://127.0.0.1:8000/api/auth/login', data);
-    
+  }
+
+  Me(): Observable<User> {
+    return this.http.get<User>('http://127.0.0.1:8000/api/auth/me');
   }
 
 
   getUser(): Observable<Root> {
-    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'));
-    return this.http.get<Root>('http://127.0.0.1:8000/api/users/index', {headers});
+    return this.http.get<Root>('http://127.0.0.1:8000/api/users/index');
   }
 
   deleteUser(id: number): Observable<HttpStatusCode> {
-    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'));
-    return this.http.delete<HttpStatusCode>('http://127.0.0.1:8000/api/users/destroy/' + id, {headers});
+    return this.http.delete<HttpStatusCode>('http://127.0.0.1:8000/api/users/destroy/' + id);
   }
 
   verifyCode(data: VerifyCode): Observable<LoginResponse> {

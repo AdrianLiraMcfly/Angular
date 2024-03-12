@@ -15,6 +15,8 @@ export const routes: Routes = [
     { path: 'tablaConsoleSales', loadChildren: () => import('./pages/Tablas/tabla-consolessales/tabla-consolessales.module').then(m => m.TablaConsolessalesModule)},
     { path: 'tablaGamesOrders', loadChildren: () => import('./pages/Tablas/tabla-gamesorders/tabla-gamesorders.module').then(m => m.TablaGamesordersModule)},
     { path: 'tablaConsoleOrders', loadChildren: () => import('./pages/Tablas/tabla-consoleorders/tabla-consoleorders.module').then(m => m.TablaConsoleordersModule)},
+    { path: 'GamesForm', loadComponent: () => import('./pages/Tablas/tabla-games/form-games/form-games.component').then(m => m.FormGamesComponent)},
+    { path: 'GamesForm/:id', loadComponent: () => import('./pages/Tablas/tabla-games/form-games/form-games.component').then(m => m.FormGamesComponent)}, 
     { path: 'verificacion', component: VerificacionComponent },
     { path: '', redirectTo: '/login', pathMatch: 'full' }
 ];

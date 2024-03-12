@@ -8,7 +8,7 @@ import { Root } from '../Interfaces/console.orders.interface';
 })
 export class ConsoleOrdersService {
 
-  private url = 'http://127.0.1:8000/api/console/orders';
+  private url = 'http://127.0.1:8000/api/consoles/orders';
   constructor(private http:HttpClient) { }
 
   getConsoleOrders(): Observable<Root> {

@@ -15,17 +15,8 @@ import { Router } from '@angular/router';
 })
 export class TablaGamesComponent{
   @Input() games: Game[] = [];
-  isActive = false;
 
   constructor(private gamesService: GamesService,private formBuilder: FormBuilder, private router:Router) { }
-  gameForm: FormGroup = this.formBuilder.group({
-    name: [''],
-    maker: [''],
-    category: ['']
-  });
-  get name() { return this.gameForm.get('name'); }
-  get maker() { return this.gameForm.get('maker'); }
-  get category() { return this.gameForm.get('category'); }
 
 
 
@@ -39,9 +30,12 @@ export class TablaGamesComponent{
     this.games = this.games.filter((game: Game) => game.id !== id);
   });
 }
+editarJuego(id: number) {
+    this.router.navigate(['/GamesForm', id]);
+}
 
   crearJuego(){
-    this.router.navigate(['/formJuego']);
+    this.router.navigate(['/GamesForm']);
   }
   
   }
