@@ -15,10 +15,8 @@ import { VerifyCode } from '../../Core/Interfaces/verifyCode';
 export class LoginComponent{
   constructor(private user: UserService, private router:Router) { }
 
-  public error_msg = {
-    email:'',
-    password:''
-  }
+  error_msg = {email: '', password: ''};
+
 
   login: Login = {email: '', password: ''};
   verifyCode: VerifyCode = {email: '', code: '', password: ''};
@@ -28,8 +26,8 @@ export class LoginComponent{
   loginError = false;
 
   loginForm = new FormGroup({
-    email: new FormControl('', Validators.required),
-    password: new FormControl('', Validators.required),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required, Validators.minLength(6)]),
   });
 
   get email() {
@@ -57,13 +55,17 @@ export class LoginComponent{
     (error) => {
      this.error_msg.email = '',
       this.error_msg.password = '';
-      if(error.error.error === 'invalid_credentials') {
+      if(error.mesages === 'invalid_credentials') {
         this.error_msg.email = 'Email or password is incorrect';
       }
-      if(error.error.error === 'invalid_email') {
+      if(error.status === '403') {
+        this.loginError = true;
+        this.error_msg.email = 'Email or password is incorrect';
+      }
+      if(error.mesages === 'invalid_email') {
         this.error_msg.email = 'Email is incorrect';
       }
-      if(error.error.error === 'invalid_password') {
+      if(error.mesages === 'invalid_password') {
         this.error_msg.password = 'Password is incorrect';
       }
     }

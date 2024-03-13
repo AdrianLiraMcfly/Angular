@@ -20,6 +20,7 @@ export const routes: Routes = [
     { path: 'ConsolesForm', loadComponent: () => import('./pages/Tablas/tabla-consolas/form-consolas/form-consolas.component').then(m => m.FormConsolasComponent)},
     { path: 'ConsolesForm/:id', loadComponent: () => import('./pages/Tablas/tabla-consolas/form-consolas/form-consolas.component').then(m => m.FormConsolasComponent)},
     { path: 'UsuariosForm/:id', loadComponent: () => import('./pages/Tablas/tablaUsuario/form-usuarios/form-usuarios.component').then(m => m.FormUsuariosComponent)},
+    { path: 'UsuariosForm', loadComponent: () => import('./pages/Tablas/tablaUsuario/form-usuarios/form-usuarios.component').then(m => m.FormUsuariosComponent)},
     { path: 'CategoriesForm', loadComponent: () => import('./pages/Tablas/tabla-categorias/form-categorias/form-categorias.component').then(m => m.FormCategoriasComponent)},
     { path: 'CategoriesForm/:id', loadComponent: () => import('./pages/Tablas/tabla-categorias/form-categorias/form-categorias.component').then(m => m.FormCategoriasComponent)},
     { path: 'SuppliersForm', loadComponent: () => import('./pages/Tablas/tabla-suppliers/form-suppliers/form-suppliers.component').then(m => m.FormSuppliersComponent)},

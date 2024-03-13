@@ -21,6 +21,10 @@ export class TablaComponent {
     });
   }
 
+  crearUser() {
+    this.router.navigate(['/UsuariosForm']);
+  }
+  
   deleteUser(id: number) {
     this.userService.deleteUser(id).subscribe((response: any) => {
       this.users = this.users.filter((user: any) => user.id !== id);

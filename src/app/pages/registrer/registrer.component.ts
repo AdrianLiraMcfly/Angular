@@ -15,6 +15,7 @@ export class RegistrerComponent implements OnInit{
 
   constructor(private user:UserService ) { }
 
+
   register: Register= {email:'', name:'', password:'', password_confirmation:''};
 
   registrerForm = new FormGroup({

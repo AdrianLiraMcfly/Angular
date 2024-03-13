@@ -50,9 +50,17 @@ export class FormUsuariosComponent {
 
   onSubmit() {
     console.log(this.userRegis);
-      this.userService.updateUser(this.userRegis, Number(this.id)).subscribe((response: any) => {
-        this.router.navigate(['/tabla']);
-      });
+      if (this.id) {
+        this.userService.updateUser(this.userRegis,Number(this.id)).subscribe((response: any) => {
+          console.log(response);
+          this.router.navigate(['/tabla']);
+        });
+      } else {
+        this.userService.registrarUsuario(this.userRegis).subscribe((response: any) => {
+          console.log(response);
+          this.router.navigate(['/tabla']);
+        });
+      }
     
   }
 }
