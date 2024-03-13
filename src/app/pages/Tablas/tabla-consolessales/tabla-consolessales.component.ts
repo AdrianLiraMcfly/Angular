@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ConsolesService } from '../../../Core/services/consoles.service';
+import { ConsolesSalesService } from '../../../Core/services/consoles-sales.service';
 @Component({
   selector: 'app-tabla-consolessales',
   standalone: true,
@@ -10,16 +10,16 @@ import { ConsolesService } from '../../../Core/services/consoles.service';
 })
 export class TablaConsolessalesComponent {
 @Input() consolessales: any[] = [];
-constructor(private consolesService: ConsolesService) { }
+constructor(private consolesService: ConsolesSalesService) { }
 
 ngOnInit() {
-  this.consolesService.getConsoles().subscribe((response: any) => {
+  this.consolesService.getConsolesSales().subscribe((response: any) => {
     this.consolessales = response.consoles;
   });
 }
 
 deleteConsole(id: number) {
-  this.consolesService.delateConsole(id).subscribe((response: any) => {
+  this.consolesService.deleteConsoleSale(id).subscribe((response: any) => {
     this.consolessales = this.consolessales.filter((console: any) => console.id !== id);
   });
 }

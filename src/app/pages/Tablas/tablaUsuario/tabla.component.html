@@ -12,6 +12,8 @@
                                 <th>#</th>
                                 <th>Nombre</th>
                                 <th>Email</th>
+                                <th>Status</th>
+                                <th>Rol</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
@@ -20,8 +22,11 @@
                                 <td>{{ user.id }}</td>
                                 <td>{{ user.name }}</td>
                                 <td>{{ user.email }}</td>
+                                <td>{{ user.status }}</td>
+                                <td>{{ user.role.name }}</td>
                                 <td>
                                     <button class="btn btn-danger" (click)="deleteUser(user.id)">Eliminar</button>
+                                    <button class="btn btn-warning" (click)="editarUsuario(user.id)">Editar</button>
                                 </td>
                             </tr>
                         </tbody>

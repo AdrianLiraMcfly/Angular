@@ -38,4 +38,13 @@ export class UserService {
   verifyCode(data: VerifyCode): Observable<LoginResponse> {
     return this.http.post<LoginResponse>('http://127.0.0.1:8000/api/auth/login', data);
   }
+
+  updateUser(data: any, id: number): Observable<any> {
+    return this.http.put<any>('http://127.0.0.1:8000/api/users/update/' + id, data);
+  }
+
+  getUserById(id: number): Observable<User> {
+    return this.http.get<User>('http://127.0.0.1:8000/api/users/show/' + id);
+  }
+  
 }

@@ -16,7 +16,14 @@ export const routes: Routes = [
     { path: 'tablaGamesOrders', loadChildren: () => import('./pages/Tablas/tabla-gamesorders/tabla-gamesorders.module').then(m => m.TablaGamesordersModule)},
     { path: 'tablaConsoleOrders', loadChildren: () => import('./pages/Tablas/tabla-consoleorders/tabla-consoleorders.module').then(m => m.TablaConsoleordersModule)},
     { path: 'GamesForm', loadComponent: () => import('./pages/Tablas/tabla-games/form-games/form-games.component').then(m => m.FormGamesComponent)},
-    { path: 'GamesForm/:id', loadComponent: () => import('./pages/Tablas/tabla-games/form-games/form-games.component').then(m => m.FormGamesComponent)}, 
+    { path: 'GamesForm/:id', loadComponent: () => import('./pages/Tablas/tabla-games/form-games/form-games.component').then(m => m.FormGamesComponent)},
+    { path: 'ConsolesForm', loadComponent: () => import('./pages/Tablas/tabla-consolas/form-consolas/form-consolas.component').then(m => m.FormConsolasComponent)},
+    { path: 'ConsolesForm/:id', loadComponent: () => import('./pages/Tablas/tabla-consolas/form-consolas/form-consolas.component').then(m => m.FormConsolasComponent)},
+    { path: 'UsuariosForm/:id', loadComponent: () => import('./pages/Tablas/tablaUsuario/form-usuarios/form-usuarios.component').then(m => m.FormUsuariosComponent)},
+    { path: 'CategoriesForm', loadComponent: () => import('./pages/Tablas/tabla-categorias/form-categorias/form-categorias.component').then(m => m.FormCategoriasComponent)},
+    { path: 'CategoriesForm/:id', loadComponent: () => import('./pages/Tablas/tabla-categorias/form-categorias/form-categorias.component').then(m => m.FormCategoriasComponent)},
+    { path: 'SuppliersForm', loadComponent: () => import('./pages/Tablas/tabla-suppliers/form-suppliers/form-suppliers.component').then(m => m.FormSuppliersComponent)},
+    { path: 'SuppliersForm/:id', loadComponent: () => import('./pages/Tablas/tabla-suppliers/form-suppliers/form-suppliers.component').then(m => m.FormSuppliersComponent)},
     { path: 'verificacion', component: VerificacionComponent },
     { path: '', redirectTo: '/login', pathMatch: 'full' }
 ];

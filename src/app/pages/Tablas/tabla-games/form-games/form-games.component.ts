@@ -87,9 +87,9 @@ export class FormGamesComponent {
     } else {
       this.gamesService.createGame(this.game).subscribe(
         data => {
-          console.log(data);
-          this.router.navigate(['/tablaGames']);
-        }
+        console.log(data);
+        this.router.navigate(['/tablaGames']);
+      }
       );
     }
 

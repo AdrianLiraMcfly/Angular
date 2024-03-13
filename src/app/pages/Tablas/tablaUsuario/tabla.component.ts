@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UserService } from '../../../Core/services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tabla',
@@ -12,7 +13,7 @@ import { UserService } from '../../../Core/services/user.service';
 export class TablaComponent {
   @Input() users: any[] = [];
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
     this.userService.getUser().subscribe((response: any) => {
@@ -24,5 +25,9 @@ export class TablaComponent {
     this.userService.deleteUser(id).subscribe((response: any) => {
       this.users = this.users.filter((user: any) => user.id !== id);
     });
+  }
+
+  editarUsuario(id: number) {
+    this.router.navigate(['/UsuariosForm', id]);
   }
 }

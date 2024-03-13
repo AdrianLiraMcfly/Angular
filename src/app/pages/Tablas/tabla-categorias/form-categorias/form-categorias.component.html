@@ -1,0 +1,19 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Formulario de Categorias</h5>
+                    <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+                        <div class="form-group">
+                            <label for="name">Nombre</label>
+                            <input type="text" class="form-control" id="name" formControlName="name" [(ngModel)]="category1.name">
+                            <div *ngIf="name?.invalid && (name?.dirty || name?.touched)" class="text-danger">
+                                <div *ngIf="name?.errors?.['required']">Nombre es requerido</div>
+                                <div *ngIf="name?.errors?.['minlength']">Nombre debe tener al menos 3 caracteres</div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </form>
+
+</div>

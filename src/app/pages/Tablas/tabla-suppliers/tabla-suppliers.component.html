@@ -5,7 +5,7 @@
                 <div class="card-body">
                     <h1 class="card-title
                     text-center">Tabla de suppliers</h1>
-                    <button class="btn btn-success mb-3" type="button">Crear</button>
+                    <button class="btn btn-success mb-3" type="button" (click)="crearSupplier()">Crear</button>
                     <table class="table table-striped">
                         <thead>
                             <tr>
@@ -23,7 +23,8 @@
                                 <td>{{ supplier.email }}</td>
                                 <td>{{ supplier.phone }}</td>
                                 <td>
-                                    <button class="btn btn-danger">Eliminar</button>
+                                    <button class="btn btn-danger" (click)="deleteSupplier(supplier.id)">Eliminar</button>
+                                    <button class="btn btn-warning" (click)="editarSupplier(supplier.id)">Editar</button>
                                 </td>
                             </tr>
                         </tbody>

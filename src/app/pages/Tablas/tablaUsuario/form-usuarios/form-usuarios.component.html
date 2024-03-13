@@ -1,0 +1,58 @@
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="card-title text-center">Tabla de usuarios</h1>
+                    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+                        <div class="form-group">
+                            <label for="name">Nombre</label>
+                            <input type="text" class="form-control" id="name" formControlName="name" [(ngModel)]="userRegis.name">
+                            <div *ngIf="name?.invalid && (name?.dirty || name?.touched)" class="text-danger">
+                                <div *ngIf="name?.errors?.['required']">Nombre es requerido</div>
+                                <div *ngIf="name?.errors?.['minlength']">Nombre debe tener al menos 3 caracteres</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Email</label>
+                            <input type="text" class="form-control" id="email" formControlName="email" [(ngModel)]="userRegis.email">
+                            <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="text-danger">
+                                <div *ngIf="email?.errors?.['required']">Email es requerido</div>
+                                <div *ngIf="email?.errors?.['minlength']">Email debe tener al menos 3 caracteres</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Password</label>
+                            <input type="password" class="form-control" id="password" formControlName="password" [(ngModel)]="userRegis.password">
+                            <div *ngIf="password?.invalid && (password?.dirty || password?.touched)" class="text-danger">
+                                <div *ngIf="password?.errors?.['required']">Password es requerido</div>
+                                <div *ngIf="password?.errors?.['minlength']">Password debe tener al menos 3 caracteres</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="passwordConfirm">Confirmar contraseña</label>
+                            <input type="password" class="form-control" id="passwordConfirm" formControlName="passwordConfirm" [(ngModel)]="userRegis.password_confirmation">
+                            <div *ngIf="passwordConfirm?.invalid && (passwordConfirm?.dirty || passwordConfirm?.touched)" class="text-danger">
+                                <div *ngIf="passwordConfirm?.errors?.['required']">La confirmación de la contraseña es requerida</div>
+                                <div *ngIf="passwordConfirm?.errors?.['minlength']">La confirmación de la contraseña debe tener al menos 3 caracteres</div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="description">Role</label>
+                            <select class="form-control" id="rol_id" formControlName="rol_id" [(ngModel)]="userRegis.role_id">
+                                <option value="">Selecciona un rol</option>
+                                <option value="1">Admin</option>
+                                <option value="2">Guest</option>
+                                <option value="3">User</option>
+                                <option value="4">Costumer</option>
+                            </select>
+                            <div *ngIf="rol_id?.invalid && (rol_id?.dirty || rol_id?.touched)" class="text-danger">
+                                <div *ngIf="rol_id?.errors?.['required']">Role es requerido</div>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </form>
+                </div>
+</div>

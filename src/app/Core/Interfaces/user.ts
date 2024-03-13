@@ -6,4 +6,10 @@ export interface User {
   status: number
   created_at: any
   updated_at: any
+  rol: Role
+}
+
+export interface Role {
+  id: number
+  name: string
 }

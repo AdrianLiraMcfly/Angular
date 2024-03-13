@@ -15,6 +15,11 @@ import { VerifyCode } from '../../Core/Interfaces/verifyCode';
 export class LoginComponent{
   constructor(private user: UserService, private router:Router) { }
 
+  public error_msg = {
+    email:'',
+    password:''
+  }
+
   login: Login = {email: '', password: ''};
   verifyCode: VerifyCode = {email: '', code: '', password: ''};
   submitted = false;
@@ -37,11 +42,10 @@ export class LoginComponent{
   onSubmit() {
 
     this.submitted = true;
-    this.user.loginUsuario(this.login).subscribe(
-      response => {
+    this.user.loginUsuario(this.login).subscribe((response) => {
         if(response.msg === 'Insert Code, Check Your Email') {
-        this.loginSuccess = true;
-        this.loginError = false;
+        this.error_msg.email = '';
+        this.error_msg.password = '';
         this.showCodeVeryfication = true;
         this.verifyCode.email = this.login.email;
         this.verifyCode.password = this.login.password;
@@ -49,7 +53,21 @@ export class LoginComponent{
         this.loginSuccess = false;
         this.loginError = true;
       }
+    },
+    (error) => {
+     this.error_msg.email = '',
+      this.error_msg.password = '';
+      if(error.error.error === 'invalid_credentials') {
+        this.error_msg.email = 'Email or password is incorrect';
+      }
+      if(error.error.error === 'invalid_email') {
+        this.error_msg.email = 'Email is incorrect';
+      }
+      if(error.error.error === 'invalid_password') {
+        this.error_msg.password = 'Password is incorrect';
+      }
     }
+    
     );
   }
 
