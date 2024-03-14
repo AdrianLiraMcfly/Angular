@@ -61,9 +61,9 @@ export class FormGamesComponent {
   game: gameRegist = {name: '', maker: '', category_id: 0, stock: 0, price: 0, supplier_id: 0};
 
   gameForm = new FormGroup({
-    name: new FormControl('', [Validators.required, Validators.minLength(3)]),
-    maker: new FormControl('', [Validators.required, Validators.minLength(3)]),
-    category_id: new FormControl('', [Validators.required]),
+    name: new FormControl('', [Validators.required]),
+    maker: new FormControl('', [Validators.required]),
+    category_id: new FormControl('', [Validators.required, Validators.pattern('^[0-9]*$')]),
     stock: new FormControl('', [Validators.required]),
     price: new FormControl('', [Validators.required]),
     supplier_id: new FormControl('', [Validators.required])

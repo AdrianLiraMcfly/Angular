@@ -36,8 +36,8 @@ supplier: SupplierRegis = {name: '', email: '', phone: ''};
 
 supplierForm = new FormGroup({
   name: new FormControl('', [Validators.required]),
-  email: new FormControl('', [Validators.required]),
-  phone: new FormControl('', [Validators.required])
+  email: new FormControl('', [Validators.required, Validators.email]),
+  phone: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(10)])
 });
 
 get name() { return this.supplierForm.get('name'); }
